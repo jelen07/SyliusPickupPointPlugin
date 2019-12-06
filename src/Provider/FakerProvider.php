@@ -57,4 +57,12 @@ final class FakerProvider implements ProviderInterface
             (string) $this->faker->longitude
         );
     }
+
+    /**
+     * @return string
+     */
+    public function getPickupPointType(): string
+    {
+        return ProviderInterface::PICKUP_POINT_TYPE_SELECTBOX;
+    }
 }

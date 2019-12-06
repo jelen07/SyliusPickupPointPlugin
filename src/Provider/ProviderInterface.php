@@ -9,6 +9,9 @@ use Sylius\Component\Core\Model\OrderInterface;
 
 interface ProviderInterface
 {
+    /** @var string */
+    public CONST PICKUP_POINT_TYPE_SELECTBOX = 'selectbox';
+
     /**
      * A unique code identifying this provider
      */
@@ -27,4 +30,9 @@ interface ProviderInterface
     public function findPickupPoints(OrderInterface $order): array;
 
     public function findOnePickupPointById(string $id): ?PickupPointInterface;
+
+    /**
+     * @return string
+     */
+    public function getPickupPointType(): string;
 }

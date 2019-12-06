@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusPickupPointPlugin\Form\Type;
 
+use Setono\SyliusPickupPointPlugin\Provider\ProviderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormInterface;
@@ -22,6 +23,7 @@ final class PickupPointChoiceType extends AbstractType
         $view->vars['choice_name'] = $options['choice_name'];
         $view->vars['choice_value'] = $options['choice_value'];
         $view->vars['placeholder'] = $options['placeholder'];
+        $view->vars['pickup_point_type'] = $options['pickup_point_type'];
     }
 
     /**
@@ -38,11 +40,13 @@ final class PickupPointChoiceType extends AbstractType
                 'multiple' => false,
                 'error_bubbling' => false,
                 'placeholder' => '',
+                'pickup_point_type' => ProviderInterface::PICKUP_POINT_TYPE_SELECTBOX,
             ])
             ->setAllowedTypes('choice_name', ['string'])
             ->setAllowedTypes('choice_value', ['string'])
             ->setAllowedTypes('multiple', ['bool'])
             ->setAllowedTypes('placeholder', ['string'])
+            ->setAllowedTypes('pickup_point_type', ['string'])
         ;
     }
 
