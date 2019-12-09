@@ -75,5 +75,8 @@ final class SetonoSyliusPickupPointExtension extends Extension
 
             $loader->load('services/providers/post_nord.xml');
         }
+        if ($config['providers']['zasilkovna']) {
+            $loader->load('services/providers/zasilkovna.xml');
+        }
     }
 }
