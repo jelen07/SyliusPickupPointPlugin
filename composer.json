@@ -11,15 +11,6 @@
         "php": "^7.2",
         "sylius/sylius": "^1.6"
     },
-    "conflict": {
-        "symfony/browser-kit": "^4.3",
-        "symfony/dependency-injection": "^4.3",
-        "symfony/doctrine-bridge": "^4.3",
-        "symfony/dom-crawler": "^4.3",
-        "symfony/framework-bundle": "^4.3",
-        "symfony/routing": "^4.3",
-        "symfony/symfony": "^4.3"
-    },
     "suggest": {
         "setono/dao-bundle": "Install this bundle to use the DAO provider",
         "setono/gls-webservice-bundle": "Install this bundle to use the GLS provider",
