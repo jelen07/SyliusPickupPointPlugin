@@ -24,6 +24,7 @@ final class PickupPointChoiceType extends AbstractType
         $view->vars['choice_value'] = $options['choice_value'];
         $view->vars['placeholder'] = $options['placeholder'];
         $view->vars['pickup_point_type'] = $options['pickup_point_type'];
+        $view->vars['shipment'] = $options['shipment'];
     }
 
     /**
@@ -41,12 +42,14 @@ final class PickupPointChoiceType extends AbstractType
                 'error_bubbling' => false,
                 'placeholder' => '',
                 'pickup_point_type' => ProviderInterface::PICKUP_POINT_TYPE_SELECTBOX,
+                'shipment' => new \stdClass(),
             ])
             ->setAllowedTypes('choice_name', ['string'])
             ->setAllowedTypes('choice_value', ['string'])
             ->setAllowedTypes('multiple', ['bool'])
             ->setAllowedTypes('placeholder', ['string'])
             ->setAllowedTypes('pickup_point_type', ['string'])
+            ->setAllowedTypes('shipment', ['object'])
         ;
     }
 

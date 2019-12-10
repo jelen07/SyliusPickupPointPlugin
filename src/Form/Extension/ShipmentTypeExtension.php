@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusPickupPointPlugin\Form\Extension;
 
+use Setono\SyliusPickupPointPlugin\Form\Type\PickupPointDetailType;
 use Setono\SyliusPickupPointPlugin\Form\Type\PickupPointIdChoiceType;
 use Setono\SyliusPickupPointPlugin\Provider\ProviderInterface;
 use Sylius\Bundle\CoreBundle\Form\Type\Checkout\ShipmentType;
@@ -41,15 +42,25 @@ final class ShipmentTypeExtension extends AbstractTypeExtension
                 $shipment = $event->getData();
 
                 $providerCode = $shipment->getMethod()->getPickupPointProvider();
+                $pickupPointType = ProviderInterface::PICKUP_POINT_TYPE_SELECTBOX;
 
-                /** @var ProviderInterface $provider */
-                $provider = $this->providerRegistry->get($providerCode);
+                if (null !== $providerCode) {
+                    /** @var ProviderInterface $provider */
+                    $provider = $this->providerRegistry->get($providerCode);
+                    $pickupPointType = $provider->getPickupPointType();
+                }
 
                 $form->add('pickupPointId', PickupPointIdChoiceType::class, [
                     'label' => 'setono_sylius_pickup_point.form.shipment.pickup_point_id',
                     'placeholder' => 'setono_sylius_pickup_point.form.shipment.select_pickup_point',
                     'required' => true,
-                    'pickup_point_type' => $provider->getPickupPointType(),
+                    'pickup_point_type' => $pickupPointType,
+                    'shipment' => $shipment,
+                ]);
+
+                $form->add('pickupPointDetail', PickupPointDetailType::class, [
+                    'required' => true,
+                    'mapped' => false,
                 ]);
             })
         ;
