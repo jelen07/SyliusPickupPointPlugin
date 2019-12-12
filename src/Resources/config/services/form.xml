@@ -35,7 +35,6 @@
         </service>
 
         <service id="Setono\SyliusPickupPointPlugin\Form\Extension\ShipmentTypeExtension">
-            <argument type="service" id="setono_sylius_pickup_point.registry.provider" />
             <tag name="form.type_extension" extended_type="Sylius\Bundle\CoreBundle\Form\Type\Checkout\ShipmentType" />
         </service>
 

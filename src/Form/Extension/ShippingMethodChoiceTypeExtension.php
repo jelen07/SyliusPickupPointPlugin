@@ -40,6 +40,9 @@ final class ShippingMethodChoiceTypeExtension extends AbstractTypeExtension
         $this->csrfTokenManager = $csrfTokenManager;
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $defaultAttr = ['class' => 'input-shipping-method'];
@@ -59,10 +62,14 @@ final class ShippingMethodChoiceTypeExtension extends AbstractTypeExtension
             return [
                 'data-pickup-point-provider' => $provider->getCode(),
                 'data-csrf-token' => $this->csrfTokenManager->getToken((string) $this->cartContext->getCart()->getId()),
+                'pickup_point_type' => $provider->getPickupPointType(),
             ] + $defaultAttr;
         });
     }
 
+    /**
+     * @return iterable
+     */
     public static function getExtendedTypes(): iterable
     {
         return [ShippingMethodChoiceType::class];
