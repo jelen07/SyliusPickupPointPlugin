@@ -14,3 +14,4 @@ setono_sylius_pickup_point:
         gls: GLS
         post_nord: PostNord
         zasilkovna: Zásilkovna
+        ulozenka: Uloženka
