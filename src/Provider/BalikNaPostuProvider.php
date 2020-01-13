@@ -7,14 +7,14 @@ namespace Setono\SyliusPickupPointPlugin\Provider;
 use Setono\SyliusPickupPointPlugin\Model\PickupPointInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 
-final class UlozenkaProvider implements ProviderInterface
+final class BalikNaPostuProvider implements ProviderInterface
 {
     /**
      * @inheritDoc
      */
     public function getCode(): string
     {
-        return 'ulozenka';
+        return 'balik_na_postu';
     }
 
     /**
@@ -22,7 +22,7 @@ final class UlozenkaProvider implements ProviderInterface
      */
     public function getName(): string
     {
-        return 'Uloženka';
+        return 'Balík na poštu';
     }
 
     /**
